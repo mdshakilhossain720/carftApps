@@ -118,6 +118,7 @@ class _HomePageState extends State<HomePage> {
                     ProductCard(),
                     ProductCard(),
                     ProductCard(),
+
                     ProductCard(),
                     ProductCard(),
                     ProductCard(),
