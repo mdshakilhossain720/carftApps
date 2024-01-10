@@ -37,27 +37,31 @@ class _ProductDetailsState extends State<ProductDetails> {
           color: Colors.grey,
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ProductCarasuel(),
-
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Expanded(
+      body: SingleChildScrollView(
+        child: Column(
+         // crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ProductCarasuel(),
+        
+            Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
                       Column(
                         children: [
-                          Text("Addinas caruel show 5268 new Brand new ",style: titleTextStyle.copyWith(
+                          Text("Addinas caruel show \n5268 new Brand new ",style: titleTextStyle.copyWith(
                             fontSize: 18,
                           ),),
-                  
+
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                  
+
                               Wrap(
                                 crossAxisAlignment: WrapCrossAlignment.center,
                                 children: [
@@ -65,10 +69,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                                   Text("4.5",style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     color: Colors.grey,
-                  
+
                                   ),),
                                   Text("Reviews",style: TextStyle(fontSize: 12,color: Colors.blue),),
-                  
+
                                 ],
                               ),
                               SizedBox(width: 10,),
@@ -76,7 +80,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 decoration: BoxDecoration(
                                   color: primarycolor,
                                   borderRadius: BorderRadius.circular(5),
-                  
+
                                 ),
                                 child: Padding(padding: EdgeInsets.all(4),
                                   child: Icon(Icons.favorite,size: 12,color: Colors.white,),
@@ -84,7 +88,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               )
                             ],
                           ),
-                  
+
                         ],
                       )
                     ],
@@ -166,35 +170,35 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ],
               ),
             ),
-          ),
-
-          
-          Container(
-            padding: EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: primarycolor.withOpacity(0.4),
-              
+        
+        
+            Container(
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: primarycolor.withOpacity(0.4),
+        
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      Text("prices"),
+                      Text("100"),
+        
+                    ],
+                  ),
+                  SizedBox(
+                    width: 120,
+                    child: buttonresuable(title: "add to cart", ontab: (){}),
+                  ),
+                ],
+              ),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    Text("prices"),
-                    Text("100"),
-                    
-                  ],
-                ),
-                SizedBox(
-                  width: 120,
-                  child: buttonresuable(title: "add to cart", ontab: (){}),
-                ),
-              ],
-            ),
-          )
-
-
-        ],
+        
+        
+          ],
+        ),
       ),
     );
   }

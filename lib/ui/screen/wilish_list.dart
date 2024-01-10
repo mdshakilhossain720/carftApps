@@ -12,7 +12,7 @@ class WilishScreen extends StatelessWidget {
       body: GridView.builder(
           itemCount: 50,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3), itemBuilder: (context,index){
+          crossAxisCount: 2), itemBuilder: (context,index){
         return ProductCard();
       }),
     );

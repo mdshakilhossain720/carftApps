@@ -1,3 +1,4 @@
+import 'package:craftapps/ui/screen/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,12 +11,12 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: (){
-        Get.to(ProductCard());
-      },
-      child: SizedBox(
-        width: 140,
+    return SizedBox(
+      width: 145,
+      child: InkWell(
+        onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (_)=>ProductDetails()));
+        },
         child: Card(
           elevation: 2,
           child: Column(
@@ -52,13 +53,14 @@ class ProductCard extends StatelessWidget {
                         ),
                         SizedBox(width: 10,),
                         Container(
+
                           decoration: BoxDecoration(
                             color: primarycolor,
                             borderRadius: BorderRadius.circular(5),
 
                           ),
                           child: Padding(padding: EdgeInsets.all(4),
-                            child: Icon(Icons.favorite,size: 12,color: Colors.white,),
+                            child: Icon(Icons.favorite,size: 6,color: Colors.white,),
                           ),
                         )
                       ],

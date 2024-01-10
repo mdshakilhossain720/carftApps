@@ -1,3 +1,5 @@
+import 'package:craftapps/state_managemnt/bottom_navbar%20_controller.dart';
+import 'package:craftapps/state_managemnt/user_login.dart';
 import 'package:craftapps/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: GetXBindings(),
       home: SpalshScreen(),
 
 
@@ -50,5 +53,15 @@ class MyApp extends StatelessWidget {
 
     );
   }
+}
+
+class GetXBindings extends Bindings{
+  @override
+  void dependencies() {
+    Get.put(BottomNavBarController());
+    Get.put(UserLoginController());
+
+  }
+
 }
 

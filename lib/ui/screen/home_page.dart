@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:craftapps/ui/utils/app_colors.dart';
 import 'package:craftapps/ui/utils/style.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../widgets/home/appbarbutton.dart';
 import '../widgets/home/category.dart';
@@ -9,6 +10,7 @@ import '../widgets/home/home_searchbar.dart';
 import '../widgets/home/homecaruselwidgets.dart';
 import '../widgets/home/remarltitle.dart';
 import '../widgets/home/produccard.dart';
+import 'email_verifaction_screen.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -31,7 +33,9 @@ class _HomePageState extends State<HomePage> {
           children: [
             Image.asset("asserts/image/logonav.png"),
             Spacer(),
-            Appbarbutton(iconData: Icons.person, ontab: () {},),
+            Appbarbutton(iconData: Icons.person, ontab: () {
+              Get.to(VerifactionScreen());
+            },),
             Appbarbutton(iconData: Icons.call, ontab: () {},),
             Appbarbutton(iconData: Icons.notification_add, ontab: () {},),
           ],
