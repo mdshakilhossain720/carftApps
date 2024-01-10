@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../screen/product_list_screen.dart';
 import '../../utils/app_colors.dart';
 class CategortyCard extends StatelessWidget {
   final String title;
@@ -13,14 +15,19 @@ class CategortyCard extends StatelessWidget {
       padding: const EdgeInsets.all(4.0),
       child: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              color: primarycolor.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Padding(padding: EdgeInsets.all(16),
-              child: Icon(Icons.computer,size: 28,color: primarycolor,),
+          InkWell(
+            onTap: (){
+              Get.to(ProductList());
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: primarycolor.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Padding(padding: EdgeInsets.all(16),
+                child: Icon(Icons.computer,size: 28,color: primarycolor,),
 
+              ),
             ),
           ),
           Text(title,textAlign: TextAlign.center,style: TextStyle(
