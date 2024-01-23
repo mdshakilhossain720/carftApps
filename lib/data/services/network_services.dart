@@ -10,9 +10,9 @@ class NetworkCall {
 
   static Future<ResponseModel> getRequest({required String url}) async {
     try {
-      final Response response = await get(Uri.parse(Urls.baseurl + url));
+      final response = await get(Uri.parse(Urls.baseurl + url));
       log(response.body);
-      if (response == 200) {
+      if (response== 200) {
         return ResponseModel(
             statusCode: response.statusCode,
             returnData: jsonDecode(response.body),

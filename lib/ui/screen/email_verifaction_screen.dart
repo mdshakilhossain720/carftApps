@@ -16,6 +16,8 @@ class VerifactionScreen extends StatefulWidget {
 
 class _VerifactionScreenState extends State<VerifactionScreen> {
   final TextEditingController emailEditingController =TextEditingController();
+  final GlobalKey<FormState> globalKey=GlobalKey<FormState>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -35,22 +37,29 @@ class _VerifactionScreenState extends State<VerifactionScreen> {
 
                 Text("Please Enter your Email Address",style: subtitle),
 
-                customTextfield(controller: emailEditingController, validation: (String?value) {},
+                customTextfield(controller: emailEditingController, validation: (String?value) {
+                  if(value?.isEmpty?? true){
+                    return 'Enter the email';
+                  }
+                  return null;
+                },
                   hintext: 'Enter your Email',textInputType: TextInputType.emailAddress,),
                 SizedBox(height: 16,),
-                 authController.emailverifactionprogress ? CircularProgressIndicator():
+                 authController.emailverifactionprogress?CircularProgressIndicator():
                  buttonresuable(title: 'Next', ontab: () async {
-                   final bool response=await authController.emailverifaction(emailEditingController.text);
+                  if(globalKey.currentState!.validate()){
+                    final bool response=await authController.emailverifaction(emailEditingController.text);
 
-                   if(response){
-                     Get.to(OtpVerifaction());
-                   }else{
-                     if(mounted){
-                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Not Emailverifaction")));
+                    if(response){
+                      Get.to(OtpVerifaction(email: emailEditingController.text,));
+                    }else{
+                      if(mounted){
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Not Emailverifaction")));
 
-                     }
+                      }
 
-                   }
+                    }
+                  }
                  },),
               ],
             ),
