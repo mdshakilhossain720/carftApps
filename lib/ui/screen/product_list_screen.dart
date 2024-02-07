@@ -12,13 +12,13 @@ class ProductList extends StatelessWidget {
       ),
       ),
 
-      body: GridView.builder(
-        itemCount: 20,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            childAspectRatio: 0.75,
-              crossAxisCount: 3), itemBuilder: (context,index){
-            return ProductCard();
-      }),
+      // body: GridView.builder(
+      //   itemCount: 20,
+      //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      //       childAspectRatio: 0.75,
+      //         crossAxisCount: 3), itemBuilder: (context,index){
+      //       return ProductCard();
+      // }),
     );
   }
 }

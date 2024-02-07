@@ -1,4 +1,5 @@
 import 'package:craftapps/state_managemnt/bottom_navbar%20_controller.dart';
+import 'package:craftapps/state_managemnt/home_controller.dart';
 import 'package:craftapps/ui/screen/cart.dart';
 import 'package:craftapps/ui/screen/home_page.dart';
 import 'package:craftapps/ui/screen/wilish_list.dart';
@@ -6,6 +7,7 @@ import 'package:craftapps/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../state_managemnt/product_by_remark_controller.dart';
 import 'categroy_screen.dart';
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({super.key});
@@ -23,6 +25,15 @@ class _BottomNavbarState extends State<BottomNavbar> {
     WilishScreen(),
     CartScreen(),
   ];
+
+  @override
+  void initState() {
+
+    super.initState();
+    Get.find<HomeController>().getHomeSlider();
+    Get.find<ProductByRemarkController>().getProductRemar();
+  }
+
   int selectindex=0;
 
   @override

@@ -9,12 +9,12 @@ class WilishScreen extends StatelessWidget {
       appBar: AppBar(title: Text("Wilishlist"),
       leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back)),
       ),
-      body: GridView.builder(
-          itemCount: 50,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2), itemBuilder: (context,index){
-        return ProductCard();
-      }),
+      // body: GridView.builder(
+      //     itemCount: 50,
+      //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      //     crossAxisCount: 2), itemBuilder: (context,index){
+      //   return ProductCard();
+      // }),
     );
   }
 }

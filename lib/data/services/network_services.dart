@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:craftapps/data/model/response_model.dart';
 import 'package:craftapps/data/utilits/urls.dart';
+import 'package:craftapps/state_managemnt/user_login.dart';
 import 'package:http/http.dart';
 
 class NetworkCall {
@@ -10,7 +11,11 @@ class NetworkCall {
 
   static Future<ResponseModel> getRequest({required String url}) async {
     try {
-      final response = await get(Uri.parse(Urls.baseurl + url));
+      final response = await get(Uri.parse(Urls.baseurl + url),headers: {
+        "Content-type": "application/json",
+       // 'token':UserLoginController.token.toString(),
+      });
+
       log(response.body);
       if (response== 200) {
         return ResponseModel(

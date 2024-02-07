@@ -24,7 +24,7 @@ class UserLoginController extends GetxController{
   Future<bool>otpverifaction(String email,String otp)async{
     _otpverifactionprogress=true;
     update();
-    final response=await NetworkCall.getRequest(url:'/UserLogin/$email+otp' );
+    final response=await NetworkCall.getRequest(url:'/UserLogin/$email/$otp' );
     _otpverifactionprogress =false;
     if(response.Success){
       update();
