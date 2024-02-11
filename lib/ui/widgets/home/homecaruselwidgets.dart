@@ -1,11 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
+import '../../../data/model/homeslider.dart';
 import '../../utils/app_colors.dart';
 class carsuelsliderresuable extends StatefulWidget {
+  final HomeSliderModel homeSliders;
 
   const carsuelsliderresuable({
-    super.key,
+    super.key, required this.homeSliders,
 
   });
 
@@ -30,7 +32,7 @@ class _carsuelsliderresuableState extends State<carsuelsliderresuable> {
               }
 
           ),
-          items: [1,2,3,4,5].map((i) {
+          items:homeSliders.sliders!.map((slider) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
@@ -38,10 +40,15 @@ class _carsuelsliderresuableState extends State<carsuelsliderresuable> {
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.symmetric(horizontal: 5.0),
                     decoration: BoxDecoration(
-                      color: Colors.amber,
+                      color: primarycolor,
                       borderRadius: BorderRadius.circular(12),
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            slider.image ?? '',
+                        )
+                      )
                     ),
-                    child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+
                 );
               },
             );
@@ -54,7 +61,7 @@ class _carsuelsliderresuableState extends State<carsuelsliderresuable> {
             return Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                for(int i=0;i<5;i++)
+                for(int i=0;i<homeSliders.sliders!.length;i++)
                   Padding(padding: EdgeInsets.all(2),
                     child: Container(
 

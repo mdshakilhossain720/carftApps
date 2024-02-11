@@ -31,7 +31,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
 
     super.initState();
     Get.find<HomeController>().getHomeSlider();
-    Get.find<ProductByRemarkController>().getProductRemar();
+  //  Get.find<ProductByRemarkController>().getProductRemar();
   }
 
   int selectindex=0;

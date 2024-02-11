@@ -8,14 +8,21 @@ import 'package:get/get.dart';
 
 class ProductByRemarkController extends GetxController{
   bool getproductremarkinprogress=false;
+  bool newproductremarkinprogress=false;
+  bool popularproductremarkinprogress=false;
   ProductByRemarkModel productByRemarkModel=ProductByRemarkModel();
+  ProductByRemarkModel newProdcut=ProductByRemarkModel();
+  ProductByRemarkModel specialProdcut=ProductByRemarkModel();
   bool get productinprogress=>getproductremarkinprogress;
+  bool get newproductinprogress=>getproductremarkinprogress;
+  bool get popularproductinprogress=>getproductremarkinprogress;
    ProductByRemarkModel get productRemarkProudct=>productByRemarkModel;
 
-  Future<bool>getProductRemar() async {
+  Future<bool>getProductRemar(String remarks) async {
+
       getproductremarkinprogress=true;
       update();
-      final response=await NetworkCall.getRequest(url: Urls.productPopular);
+      final response=await NetworkCall.getRequest(url:'/ListProductByRemark/${remarks}');
       if(response.Success){
          productByRemarkModel=ProductByRemarkModel.fromJson(response.returnData);
         update();

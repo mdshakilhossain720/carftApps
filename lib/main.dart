@@ -1,3 +1,4 @@
+import 'package:craftapps/state_managemnt/auth_controller.dart';
 import 'package:craftapps/state_managemnt/bottom_navbar%20_controller.dart';
 import 'package:craftapps/state_managemnt/home_controller.dart';
 import 'package:craftapps/state_managemnt/user_login.dart';
@@ -64,6 +65,7 @@ class GetXBindings extends Bindings{
     Get.put(UserLoginController());
     Get.put(HomeController());
     Get.put(ProductByRemarkController());
+    Get.put(AuthController());
 
   }
 

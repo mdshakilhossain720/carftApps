@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'package:craftapps/state_managemnt/auth_controller.dart';
 import 'package:craftapps/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'bottomnavbar.dart';
+import 'email_verifaction_screen.dart';
 
 class SpalshScreen extends StatefulWidget {
   const SpalshScreen({super.key});
@@ -17,8 +19,14 @@ class _SpalshScreenState extends State<SpalshScreen> {
 
   @override
   void initState() {
-   Future.delayed(Duration(seconds: 3)).then((value){
-     Get.to(BottomNavbar());
+   Future.delayed(Duration(seconds: 3)).then((value) async {
+     final bool isloginstate= await Get.find<AuthController>().isLoging();
+     if(isloginstate){
+       Get.to(const BottomNavbar());
+     }else{
+       Get.off(const VerifactionScreen());
+     }
+
 
    });
     // TODO: implement initState

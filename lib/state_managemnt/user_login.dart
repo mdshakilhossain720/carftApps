@@ -1,5 +1,6 @@
 
 import 'package:craftapps/data/services/network_services.dart';
+import 'package:craftapps/state_managemnt/auth_controller.dart';
 import 'package:get/get.dart';
 
 class UserLoginController extends GetxController{
@@ -27,6 +28,7 @@ class UserLoginController extends GetxController{
     final response=await NetworkCall.getRequest(url:'/UserLogin/$email/$otp' );
     _otpverifactionprogress =false;
     if(response.Success){
+      Get.find<AuthController>().saveData(response.returnData['token']);
       update();
       return true;
     }else{

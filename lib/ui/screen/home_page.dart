@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                 if (homeController.homeProgress) {
                   return CircularProgressIndicator();
                 }
-                return carsuelsliderresuable();
+                return carsuelsliderresuable(homeSliders:homeController.homeSliders);
               }),
               SizedBox(
                 height: 8,
