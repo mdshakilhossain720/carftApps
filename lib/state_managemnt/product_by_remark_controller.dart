@@ -14,15 +14,15 @@ class ProductByRemarkController extends GetxController{
   ProductByRemarkModel newProdcut=ProductByRemarkModel();
   ProductByRemarkModel specialProdcut=ProductByRemarkModel();
   bool get productinprogress=>getproductremarkinprogress;
-  bool get newproductinprogress=>getproductremarkinprogress;
-  bool get popularproductinprogress=>getproductremarkinprogress;
+  bool get newproductinprogress=>newproductremarkinprogress;
+  bool get popularproductinprogress=>popularproductremarkinprogress;
    ProductByRemarkModel get productRemarkProudct=>productByRemarkModel;
 
-  Future<bool>getProductRemar(String remarks) async {
+  Future<bool>getProductRemar() async {
 
       getproductremarkinprogress=true;
       update();
-      final response=await NetworkCall.getRequest(url:'/ListProductByRemark/${remarks}');
+      final response=await NetworkCall.getRequest(url:'/ListProductByRemark/popular');
       if(response.Success){
          productByRemarkModel=ProductByRemarkModel.fromJson(response.returnData);
         update();
@@ -31,5 +31,33 @@ class ProductByRemarkController extends GetxController{
         update();
         return false;
       }
+  }
+  Future<bool>newProductRemar() async {
+
+    newproductremarkinprogress=true;
+    update();
+    final response=await NetworkCall.getRequest(url:'/ListProductByRemark/new');
+    if(response.Success){
+      newProdcut=ProductByRemarkModel.fromJson(response.returnData);
+      update();
+      return true;
+    }else{
+      update();
+      return false;
+    }
+  }
+  Future<bool>specialProductRemar(String remarks) async {
+
+    popularproductremarkinprogress=true;
+    update();
+    final response=await NetworkCall.getRequest(url:'/ListProductByRemark/special');
+    if(response.Success){
+      specialProdcut=ProductByRemarkModel.fromJson(response.returnData);
+      update();
+      return true;
+    }else{
+      update();
+      return false;
+    }
   }
 }

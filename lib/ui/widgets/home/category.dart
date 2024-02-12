@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import '../../screen/product_list_screen.dart';
 import '../../utils/app_colors.dart';
 class CategortyCard extends StatelessWidget {
-  final String title;
+  final String title,imageurl;
   const CategortyCard({
-    super.key, required this.title,
+    super.key, required this.title, required this.imageurl,
   });
 
   @override
@@ -25,7 +25,7 @@ class CategortyCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Padding(padding: EdgeInsets.all(16),
-                child: Icon(Icons.computer,size: 28,color: primarycolor,),
+                child:Image.network(imageurl),
 
               ),
             ),

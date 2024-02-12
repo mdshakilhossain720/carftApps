@@ -7,6 +7,7 @@ import 'package:craftapps/ui/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../state_managemnt/categortycontroller.dart';
 import '../../state_managemnt/product_by_remark_controller.dart';
 import 'categroy_screen.dart';
 class BottomNavbar extends StatefulWidget {
@@ -31,7 +32,10 @@ class _BottomNavbarState extends State<BottomNavbar> {
 
     super.initState();
     Get.find<HomeController>().getHomeSlider();
-  //  Get.find<ProductByRemarkController>().getProductRemar();
+    Get.find<ProductByRemarkController>().getProductRemar;
+    Get.find<categroityCOntroller>().categories;
+    Get.find<ProductByRemarkController>().newProdcut;
+    Get.find<ProductByRemarkController>().specialProdcut;
   }
 
   int selectindex=0;

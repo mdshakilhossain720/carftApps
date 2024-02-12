@@ -40,4 +40,36 @@ class NetworkCall {
           statusCode: -1, returnData: e.toString(), Success: false);
     }
   }
+
+
+  static Future<ResponseModel> postRequest({required String url ,Map<String, dynamic>?body}) async {
+    try {
+      final response = await post(Uri.parse(Urls.baseurl + url),headers: {
+        "Content-type": "application/json",
+        'token':AuthController.token.toString(),
+      },body: body);
+
+      log(response.body);
+      if (response.statusCode== 200) {
+        return ResponseModel(
+            statusCode: response.statusCode,
+            returnData: jsonDecode(response.body),
+            Success: true);
+      } else if(response.statusCode==401){
+        return ResponseModel(
+            statusCode: response.statusCode,
+            returnData: jsonDecode(response.body),
+            Success: false);
+      }else {
+        return ResponseModel(
+            statusCode: response.statusCode,
+            returnData: jsonDecode(response.body),
+            Success: false);
+      }
+    } catch (e) {
+      print(e.toString());
+      return ResponseModel(
+          statusCode: -1, returnData: e.toString(), Success: false);
+    }
+  }
 }

@@ -44,7 +44,7 @@ class _carsuelsliderresuableState extends State<carsuelsliderresuable> {
                       borderRadius: BorderRadius.circular(12),
                       image: DecorationImage(
                         image: NetworkImage(
-                            slider.image ?? '',
+                            slider.Images ?? '',
                         )
                       )
                     ),
@@ -64,7 +64,6 @@ class _carsuelsliderresuableState extends State<carsuelsliderresuable> {
                 for(int i=0;i<homeSliders.sliders!.length;i++)
                   Padding(padding: EdgeInsets.all(2),
                     child: Container(
-
                       height: 10,
                       width: 10,
                       decoration: BoxDecoration(

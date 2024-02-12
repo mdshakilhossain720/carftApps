@@ -14,7 +14,7 @@ class ProductCard extends StatelessWidget {
       width: 145,
       child: InkWell(
         onTap: (){
-          Navigator.push(context, MaterialPageRoute(builder: (_)=>ProductDetails()));
+          Navigator.push(context, MaterialPageRoute(builder: (_)=>ProductDetails(productDetails: product.id!)));
         },
         child: Card(
           elevation: 2,

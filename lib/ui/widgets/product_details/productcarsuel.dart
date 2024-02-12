@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../../utils/app_colors.dart';
 class ProductCarasuel extends StatefulWidget {
-  const ProductCarasuel({super.key});
+  final List<String>Images;
+  const ProductCarasuel({super.key, required this.Images});
 
   @override
   State<ProductCarasuel> createState() => _ProductCarasuelState();
@@ -26,7 +27,7 @@ class _ProductCarasuelState extends State<ProductCarasuel> {
               }
 
           ),
-          items: [1,2,3,4,5].map((i) {
+          items: Images.map((imageurl) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
@@ -36,8 +37,9 @@ class _ProductCarasuelState extends State<ProductCarasuel> {
                     decoration: BoxDecoration(
                       color: Colors.grey.withOpacity(0.2),
                       borderRadius: BorderRadius.circular(12),
+                      image: DecorationImage(image: NetworkImage(imageurl))
                     ),
-                    child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+
                 );
               },
             );

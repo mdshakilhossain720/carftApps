@@ -6,6 +6,7 @@ import 'package:craftapps/ui/utils/style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../state_managemnt/categortycontroller.dart';
 import '../widgets/home/appbarbutton.dart';
 import '../widgets/home/category.dart';
 import '../widgets/home/home_searchbar.dart';
@@ -60,7 +61,8 @@ class _HomePageState extends State<HomePage> {
                 if (homeController.homeProgress) {
                   return CircularProgressIndicator();
                 }
-                return carsuelsliderresuable(homeSliders:homeController.homeSliders);
+                return carsuelsliderresuable(
+                    homeSliders: homeController.homeSliders);
               }),
               SizedBox(
                 height: 8,
@@ -69,40 +71,58 @@ class _HomePageState extends State<HomePage> {
                 remarkName: 'Category',
                 ontab: () {},
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    CategortyCard(
-                      title: 'Computer',
+              GetBuilder<categroityCOntroller>(builder: (categoriescontroller) {
+                if (categoriescontroller.getinprogress) {
+                  return SizedBox(
+                    height: 100,
+                    child: Center(
+                      child: CircularProgressIndicator(),
                     ),
-                    CategortyCard(
-                      title: 'Computer',
-                    ),
-                    CategortyCard(
-                      title: 'Computer',
-                    ),
-                    CategortyCard(
-                      title: 'Computer',
-                    ),
-                    CategortyCard(
-                      title: 'Computer',
-                    ),
-                    CategortyCard(
-                      title: 'Computer',
-                    ),
-                    CategortyCard(
-                      title: 'Computer',
-                    ),
-                    CategortyCard(
-                      title: 'Computer',
-                    ),
-                    CategortyCard(
-                      title: 'Computer',
-                    ),
-                  ],
-                ),
-              ),
+                  );
+                }
+                return SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: categoriescontroller.categories.data!
+                        .map(
+                          (e) => CategortyCard(
+                            title: e.categoryName.toString(),
+                            imageurl: e.categoryImg.toString(),
+                          ),
+                        )
+                        .toList(),
+                    // children: [
+                    //   CategortyCard(
+                    //     title: 'Computer',
+                    //   ),
+                    //   CategortyCard(
+                    //     title: 'Computer',
+                    //   ),
+                    //   CategortyCard(
+                    //     title: 'Computer',
+                    //   ),
+                    //   CategortyCard(
+                    //     title: 'Computer',
+                    //   ),
+                    //   CategortyCard(
+                    //     title: 'Computer',
+                    //   ),
+                    //   CategortyCard(
+                    //     title: 'Computer',
+                    //   ),
+                    //   CategortyCard(
+                    //     title: 'Computer',
+                    //   ),
+                    //   CategortyCard(
+                    //     title: 'Computer',
+                    //   ),
+                    //   CategortyCard(
+                    //     title: 'Computer',
+                    //   ),
+                    // ],
+                  ),
+                );
+              }),
               SizedBox(
                 height: 10,
               ),
@@ -123,9 +143,11 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children:
-                      productBYRemarkController.productByRemarkModel.data!
-                          .map((e) => ProductCard(product: e,)).toList(),
-
+                        productBYRemarkController.productByRemarkModel.data!
+                            .map((e) => ProductCard(
+                                  product: e,
+                                ))
+                            .toList(),
                   ),
                 );
               }),
@@ -154,21 +176,27 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 12,
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    // ProductCard(),
-                    // ProductCard(),
-                    // ProductCard(),
-                    // ProductCard(),
-                    // ProductCard(),
-                    // ProductCard(),
-                    // ProductCard(),
-                    // ProductCard(),
-                  ],
-                ),
-              ),
+              GetBuilder<ProductByRemarkController>(
+                  builder: (productBYRemarkController) {
+                    if (productBYRemarkController.productinprogress) {
+                      return SizedBox(
+                        height: 90,
+                        child: Center(child: CircularProgressIndicator()),
+                      );
+                    }
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children:
+                        productBYRemarkController.newProdcut.data!
+                            .map((e) => ProductCard(
+                          product: e,
+                        ))
+                            .toList(),
+                      ),
+                    );
+                  }),
               SizedBox(
                 height: 12,
               ),
@@ -179,21 +207,27 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 12,
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    // ProductCard(),
-                    // ProductCard(),
-                    // ProductCard(),
-                    // ProductCard(),
-                    // ProductCard(),
-                    // ProductCard(),
-                    // ProductCard(),
-                    // ProductCard(),
-                  ],
-                ),
-              ),
+              GetBuilder<ProductByRemarkController>(
+                  builder: (productBYRemarkController) {
+                    if (productBYRemarkController.productinprogress) {
+                      return SizedBox(
+                        height: 90,
+                        child: Center(child: CircularProgressIndicator()),
+                      );
+                    }
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children:
+                        productBYRemarkController.specialProdcut.data!
+                            .map((e) => ProductCard(
+                          product: e,
+                        ))
+                            .toList(),
+                      ),
+                    );
+                  }),
             ],
           ),
         ),
